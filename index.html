@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 10px 0 0 0;
+      font-family: system-ui, sans-serif;
+      background: #f5f2ed;
+    }
+
+    .hero-section {
+      position: relative;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem 0;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .hero-floating-images {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-floating-images .floating-card {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      pointer-events: auto;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      transition: opacity 0.6s ease;
+    }
+
+    .hero-floating-images .floating-card:hover {
+      opacity: 0.12;
+    }
+
+    .hero-floating-images .floating-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-floating-images .floating-card-1 {
+      top: 18%;
+      left: 12%;
+      transform: rotate(-6deg);
+    }
+
+    .hero-floating-images .floating-card-2 {
+      top: 22%;
+      right: 18%;
+      transform: rotate(4deg);
+    }
+
+    .hero-floating-images .floating-card-3 {
+      bottom: 28%;
+      left: 22%;
+      transform: rotate(3deg);
+    }
+
+    .hero-floating-images .floating-card-4 {
+      bottom: 22%;
+      right: 14%;
+      transform: rotate(-5deg);
+    }
+
+    .hero-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #333;
+      margin: 0 0 0.75rem 0;
+    }
+
+    .hero-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: #222;
+      margin: 0 0 1rem 0;
+      line-height: 1.25;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.5;
+      margin: 0 0 1.75rem 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-actions .btn {
+      display: inline-block;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s;
+    }
+
+    .hero-actions .btn:hover {
+      opacity: 0.9;
+    }
+
+    .hero-actions .btn-primary {
+      background: #222;
+      color: #fff;
+    }
+
+    .hero-actions .btn-secondary {
+      background: #e8e4de;
+      color: #333;
+    }
+
+    .gallery-wrapper {
+      overflow: hidden;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: scroll 45s linear infinite;
+    }
+
+    .gallery-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .gallery {
+      display: flex;
+      flex-shrink: 0;
+      gap: 20px;
+    }
+
+    .gallery-item {
+      flex-shrink: 0;
+      width: 280px;
+      margin: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #f5f2ed;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .gallery-item:hover {
+      opacity: 0.92;
+    }
+
+    .gallery-item img {
+      width: 280px;
+      height: 280px;
+      min-width: 280px;
+      min-height: 280px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item-caption {
+      padding: 0.5rem 0.25rem 0;
+      background: #f5f2ed;
+    }
+
+    .gallery-item-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin: 0 0 0.15rem 0;
+      background: #f5f2ed;
+    }
+
+    .gallery-item-subtitle {
+      font-size: 0.8rem;
+      color: #666;
+      margin: 0;
+      background: #f5f2ed;
+    }
+
+    .projects-section {
+      padding: 4rem 1.5rem 6rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      min-height: 70vh;
+      padding: 3rem 0;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .project-panel.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-panel:nth-child(even) {
+      direction: rtl;
+    }
+
+    .project-panel:nth-child(even) > * {
+      direction: ltr;
+    }
+
+    .project-panel-image {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
+      opacity: 0;
+      transform: translateY(40px) scale(0.98);
+      transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+                  transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
+    }
+
+    .project-panel.is-visible .project-panel-image {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .project-panel-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .project-panel-content {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s,
+                  transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+    }
+
+    .project-panel.is-visible .project-panel-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-panel-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 700;
+      color: #222;
+      margin: 0 0 1rem 0;
+      line-height: 1.2;
+    }
+
+    .project-panel-description {
+      font-size: 1.05rem;
+      color: #444;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .project-panel {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        min-height: auto;
+        direction: ltr;
+      }
+
+      .project-panel:nth-child(even) {
+        direction: ltr;
+      }
+
+      .project-panel-image {
+        order: 1;
+      }
+
+      .project-panel-content {
+        order: 2;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero-section">
+    <div class="hero-floating-images" aria-hidden="true">
+      <div class="floating-card floating-card-1">
+        <img src="https://images.unsplash.com/photo-1531746795393-6c6a170d3dbb?w=400" alt="">
+      </div>
+      <div class="floating-card floating-card-2">
+        <img src="https://images.unsplash.com/photo-1561557944-6e7860b2b2a3?w=400" alt="">
+      </div>
+      <div class="floating-card floating-card-3">
+        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400" alt="">
+      </div>
+      <div class="floating-card floating-card-4">
+        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400" alt="">
+      </div>
+    </div>
+    <div class="hero">
+      <p class="hero-tag">Welcome to my portfolio</p>
+      <h1 class="hero-title">Built for <em>Fast-Moving</em> Projects.</h1>
+      <p class="hero-subtitle">Projects that matter, built with intention—robotics, engineering, and beyond.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">View Projects</a>
+        <a href="#" class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="gallery-wrapper">
+    <div class="gallery-track">
+      <div class="gallery">
+        <a href="#project-1" class="gallery-item">
+          <img src="https://picsum.photos/400/400?random=1" alt="Project One">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">Project One</p>
+            <p class="gallery-item-subtitle">Brief description of the project</p>
+          </div>
+        </a>
+        <a href="#project-2" class="gallery-item">
+          <img src="https://picsum.photos/400/400?random=2" alt="Project Two">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">Project Two</p>
+            <p class="gallery-item-subtitle">Brief description of the project</p>
+          </div>
+        </a>
+        <a href="#project-3" class="gallery-item">
+          <img src="https://picsum.photos/400/400?random=3" alt="Project Three">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">Project Three</p>
+            <p class="gallery-item-subtitle">Brief description of the project</p>
+          </div>
+        </a>
+        <a href="#project-4" class="gallery-item">
+          <img src="https://picsum.photos/400/400?random=4" alt="Project Four">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">Project Four</p>
+            <p class="gallery-item-subtitle">Brief description of the project</p>
+          </div>
+        </a>
+        <a href="#project-5" class="gallery-item">
+          <img src="https://picsum.photos/400/400?random=5" alt="Project Five">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">Project Five</p>
+            <p class="gallery-item-subtitle">Brief description of the project</p>
+          </div>
+        </a>
+        <a href="#project-6" class="gallery-item">
+          <img src="https://picsum.photos/400/400?random=6" alt="Project Six">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">Project Six</p>
+            <p class="gallery-item-subtitle">Brief description of the project</p>
+          </div>
+        </a>
+      </div>
+      <div class="gallery" aria-hidden="true">
+        <a href="#project-1" class="gallery-item">
+          <img src="https://picsum.photos/400/400?random=1" alt="">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">Project One</p>
+            <p class="gallery-item-subtitle">Brief description of the project</p>
+          </div>
+        </a>
+        <a href="#project-2" class="gallery-item">
+          <img src="https://picsum.photos/400/400?random=2" alt="">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">Project Two</p>
+            <p class="gallery-item-subtitle">Brief description of the project</p>
+          </div>
+        </a>
+        <a href="#project-3" class="gallery-item">
+          <img src="https://picsum.photos/400/400?random=3" alt="">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">Project Three</p>
+            <p class="gallery-item-subtitle">Brief description of the project</p>
+          </div>
+        </a>
+        <a href="#project-4" class="gallery-item">
+          <img src="https://picsum.photos/400/400?random=4" alt="">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">Project Four</p>
+            <p class="gallery-item-subtitle">Brief description of the project</p>
+          </div>
+        </a>
+        <a href="#project-5" class="gallery-item">
+          <img src="https://picsum.photos/400/400?random=5" alt="">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">Project Five</p>
+            <p class="gallery-item-subtitle">Brief description of the project</p>
+          </div>
+        </a>
+        <a href="#project-6" class="gallery-item">
+          <img src="https://picsum.photos/400/400?random=6" alt="">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">Project Six</p>
+            <p class="gallery-item-subtitle">Brief description of the project</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section class="projects-section" aria-label="Projects">
+    <article class="project-panel" id="project-1">
+      <div class="project-panel-image">
+        <img src="https://picsum.photos/800/600?random=1" alt="Project One">
+      </div>
+      <div class="project-panel-content">
+        <h2 class="project-panel-title">Project One</h2>
+        <p class="project-panel-description">A robotics project combining sensing and actuation. This work explores how to make systems that adapt in real time and respond to changing environments with precision and reliability.</p>
+      </div>
+    </article>
+    <article class="project-panel" id="project-2">
+      <div class="project-panel-image">
+        <img src="https://picsum.photos/800/600?random=2" alt="Project Two">
+      </div>
+      <div class="project-panel-content">
+        <h2 class="project-panel-title">Project Two</h2>
+        <p class="project-panel-description">Design and control of a custom robotic platform. From mechanical design to embedded software, this project demonstrates end-to-end development of a mobile system.</p>
+      </div>
+    </article>
+    <article class="project-panel" id="project-3">
+      <div class="project-panel-image">
+        <img src="https://picsum.photos/800/600?random=3" alt="Project Three">
+      </div>
+      <div class="project-panel-content">
+        <h2 class="project-panel-title">Project Three</h2>
+        <p class="project-panel-description">Computer vision and perception for autonomous navigation. This project integrates cameras and depth sensors to build a robust understanding of the surrounding world.</p>
+      </div>
+    </article>
+    <article class="project-panel" id="project-4">
+      <div class="project-panel-image">
+        <img src="https://picsum.photos/800/600?random=4" alt="Project Four">
+      </div>
+      <div class="project-panel-content">
+        <h2 class="project-panel-title">Project Four</h2>
+        <p class="project-panel-description">Manipulation and grasping with robotic arms. Focus on planning and execution of pick-and-place tasks in semi-structured environments.</p>
+      </div>
+    </article>
+    <article class="project-panel" id="project-5">
+      <div class="project-panel-image">
+        <img src="https://picsum.photos/800/600?random=5" alt="Project Five">
+      </div>
+      <div class="project-panel-content">
+        <h2 class="project-panel-title">Project Five</h2>
+        <p class="project-panel-description">Multi-robot coordination and swarm behaviors. Experiments with communication, formation control, and emergent strategies for collaborative tasks.</p>
+      </div>
+    </article>
+    <article class="project-panel" id="project-6">
+      <div class="project-panel-image">
+        <img src="https://picsum.photos/800/600?random=6" alt="Project Six">
+      </div>
+      <div class="project-panel-content">
+        <h2 class="project-panel-title">Project Six</h2>
+        <p class="project-panel-description">Human-robot interaction and safety. This project addresses how robots can work alongside people safely and intuitively, with clear feedback and predictable motion.</p>
+      </div>
+    </article>
+  </section>
+
+  <script>
+    (function() {
+      var panels = document.querySelectorAll('.project-panel');
+      if (!panels.length) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
+      });
+
+      panels.forEach(function(panel) {
+        observer.observe(panel);
+      });
+    })();
+  </script>
+</body>
+</html>
