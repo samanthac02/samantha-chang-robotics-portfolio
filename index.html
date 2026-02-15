@@ -5,6 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
   <style>
+    @font-face {
+      font-family: "PP Neue World";
+      src: url("fonts/PPNeueWorld-CondensedRegular.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "SF Pro Text";
+      src: url("fonts/SF-Pro-Text-Light.otf") format("opentype");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "SF Pro Text";
+      src: url("fonts/SF-Pro-Text-Regular.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "SF Pro Text";
+      src: url("fonts/SF-Pro-Text-RegularItalic.otf") format("opentype");
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "SF Pro Text";
+      src: url("fonts/SF-Pro-Text-Medium.otf") format("opentype");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "SF Pro Text";
+      src: url("fonts/SF-Pro-Text-Semibold.otf") format("opentype");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -15,8 +63,8 @@
 
     body {
       margin: 0;
-      padding: 10px 0 0 0;
-      font-family: system-ui, sans-serif;
+      padding: 20px 0 0 0;
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       background: #f5f2ed;
     }
 
@@ -68,89 +116,174 @@
     }
 
     .hero-floating-images .floating-card-1 {
-      top: 18%;
-      left: 12%;
+      top: 12%;
+      left: calc(18%);
       transform: rotate(-6deg);
     }
 
     .hero-floating-images .floating-card-2 {
-      top: 22%;
-      right: 18%;
+      top: 16%;
+      right: 19%;
       transform: rotate(4deg);
+      z-index: 1;
+      box-shadow: none;
+      width: 200px;
+      height: 200px;
     }
 
     .hero-floating-images .floating-card-3 {
-      bottom: 28%;
+      bottom: 24%;
       left: 22%;
       transform: rotate(3deg);
+      width: 200px;
+      height: auto;
+      box-shadow: none;
+    }
+
+    .hero-floating-images .floating-card-3 img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
 
     .hero-floating-images .floating-card-4 {
-      bottom: 22%;
+      top: 38%;
       right: 14%;
       transform: rotate(-5deg);
+      z-index: 0;
+    }
+
+    .hero-floating-images .floating-card-star {
+      width: 88px;
+      height: 88px;
+      right: 14%;
+      top: 38%;
+      transform: translateY(-50%) rotate(12deg);
+      box-shadow: none;
+      background: transparent;
+      z-index: 1;
+    }
+
+    .hero-floating-images .floating-card-star img {
+      object-fit: contain;
+    }
+
+    .hero-floating-images .floating-card-star:hover {
+      opacity: 0.5;
+    }
+
+    .hero-floating-images .floating-card-star2 {
+      width: 88px;
+      height: 88px;
+      left: 18%;
+      top: 48%;
+      transform: translateY(-50%) rotate(-8deg);
+      box-shadow: none;
+      background: transparent;
+      z-index: 1;
+    }
+
+    .hero-floating-images .floating-card-star2 img {
+      object-fit: contain;
+    }
+
+    .hero-floating-images .floating-card-star2:hover {
+      opacity: 0.5;
     }
 
     .hero-tag {
-      font-size: 0.75rem;
-      font-weight: 500;
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      font-size: 0.875rem;
+      font-weight: 300;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #333;
+      color: #6b6b6b;
       margin: 0 0 0.75rem 0;
     }
 
     .hero-title {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 700;
-      color: #222;
+      font-family: "PP Neue World", Georgia, serif;
+      font-size: clamp(2.75rem, 9vw, 6rem);
+      font-weight: 400;
+      color: #000;
       margin: 0 0 1rem 0;
       line-height: 1.25;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 520px) {
+      .hero-title {
+        font-size: clamp(2rem, 11vw, 2.75rem);
+      }
     }
 
     .hero-title em {
       font-style: italic;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: "PP Neue World", Georgia, serif;
     }
 
     .hero-subtitle {
       font-size: 1rem;
       color: #444;
       line-height: 1.5;
-      margin: 0 0 1.75rem 0;
+      margin: 0 0 0.25rem 0;
     }
 
     .hero-actions {
+      margin-top: 1.5rem;
       display: flex;
-      gap: 0.75rem;
+      align-items: center;
       justify-content: center;
+      gap: 1.25rem;
       flex-wrap: wrap;
     }
 
-    .hero-actions .btn {
+    .hero-actions .btn-resume {
       display: inline-block;
       padding: 0.6rem 1.25rem;
       font-size: 0.9rem;
+      font-family: inherit;
       border-radius: 6px;
       text-decoration: none;
       cursor: pointer;
       border: none;
+      background: #222;
+      color: #fff;
       transition: opacity 0.2s;
     }
 
-    .hero-actions .btn:hover {
+    .hero-actions .btn-resume:hover {
       opacity: 0.9;
     }
 
-    .hero-actions .btn-primary {
+    .hero-icon-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-icon-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: #e8e4de;
+      color: #333;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .hero-icon-links a:hover {
       background: #222;
       color: #fff;
     }
 
-    .hero-actions .btn-secondary {
-      background: #e8e4de;
-      color: #333;
+    .hero-icon-links svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
     }
 
     .gallery-wrapper {
@@ -214,14 +347,18 @@
     }
 
     .gallery-item-title {
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 1.15rem;
       margin: 0 0 0.15rem 0;
       background: #f5f2ed;
     }
 
     .gallery-item-subtitle {
-      font-size: 0.8rem;
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1rem;
       color: #666;
       margin: 0;
       background: #f5f2ed;
@@ -296,7 +433,7 @@
     }
 
     .project-panel-title {
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: "PP Neue World", Georgia, serif;
       font-size: clamp(1.75rem, 3vw, 2.25rem);
       font-weight: 700;
       color: #222;
@@ -337,25 +474,43 @@
   <section class="hero-section">
     <div class="hero-floating-images" aria-hidden="true">
       <div class="floating-card floating-card-1">
-        <img src="https://images.unsplash.com/photo-1531746795393-6c6a170d3dbb?w=400" alt="">
+        <img src="images/programming.png" alt="">
+      </div>
+      <div class="floating-card floating-card-star2">
+        <img src="images/star2.png" alt="">
       </div>
       <div class="floating-card floating-card-2">
-        <img src="https://images.unsplash.com/photo-1561557944-6e7860b2b2a3?w=400" alt="">
+        <img src="images/inventeam-walker-rendered.png" alt="">
       </div>
       <div class="floating-card floating-card-3">
-        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400" alt="">
+        <img src="images/drowning-prevention.png" alt="">
       </div>
       <div class="floating-card floating-card-4">
-        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400" alt="">
+        <img src="images/presenting.png" alt="">
+      </div>
+      <div class="floating-card floating-card-star">
+        <img src="images/star.png" alt="">
       </div>
     </div>
     <div class="hero">
-      <p class="hero-tag">Welcome to my portfolio</p>
-      <h1 class="hero-title">Built for <em>Fast-Moving</em> Projects.</h1>
-      <p class="hero-subtitle">Projects that matter, built with intention—robotics, engineering, and beyond.</p>
+      <p class="hero-tag">Welcome to my portfolio!</p>
+      <h1 class="hero-title">SAMANTHA CHANG</h1>
+      <p class="hero-subtitle">Incoming SWE @ Apple.</p>
+      <p class="hero-subtitle">Caltech, Computer Science + Control Systems + Robotics. </p>
+      <p class="hero-subtitle">ArtCenter College of Design, Interaction Design (dual-enrolled).</p>
       <div class="hero-actions">
-        <a href="#" class="btn btn-primary">View Projects</a>
-        <a href="#" class="btn btn-secondary">Get in Touch</a>
+        <a href="documents/Samantha Chang - Resume - Boston Dynamics.pdf" class="btn-resume" target="_blank" rel="noopener">Resume</a>
+        <div class="hero-icon-links">
+          <a href="https://www.linkedin.com/in/samantha-chang8/" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://github.com/samanthac02" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="mailto:schang8@caltech.edu" aria-label="Email" title="Email">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -364,45 +519,45 @@
     <div class="gallery-track">
       <div class="gallery">
         <a href="#project-1" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=1" alt="Project One">
+          <img src="https://picsum.photos/400/400?random=1" alt="Humanoid Robotics Research">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Project One</p>
-            <p class="gallery-item-subtitle">Brief description of the project</p>
+            <p class="gallery-item-title">Humanoid Robotics Research</p>
+            <p class="gallery-item-subtitle">Caltech · Control systems for humanoid robots</p>
           </div>
         </a>
         <a href="#project-2" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=2" alt="Project Two">
+          <img src="https://picsum.photos/400/400?random=2" alt="Apple Activity & Fitness">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Project Two</p>
-            <p class="gallery-item-subtitle">Brief description of the project</p>
+            <p class="gallery-item-title">Apple — Activity & Fitness</p>
+            <p class="gallery-item-subtitle">SWE Intern · Summer 2026</p>
           </div>
         </a>
         <a href="#project-3" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=3" alt="Project Three">
+          <img src="https://picsum.photos/400/400?random=3" alt="FIRST Robotics">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Project Three</p>
-            <p class="gallery-item-subtitle">Brief description of the project</p>
+            <p class="gallery-item-title">FIRST Robotics Competition</p>
+            <p class="gallery-item-subtitle">Captain & Programming Lead · Autonomous & vision</p>
           </div>
         </a>
         <a href="#project-4" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=4" alt="Project Four">
+          <img src="https://picsum.photos/400/400?random=4" alt="Lemelson-MIT InvenTeam">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Project Four</p>
-            <p class="gallery-item-subtitle">Brief description of the project</p>
+            <p class="gallery-item-title">Lemelson-MIT InvenTeam</p>
+            <p class="gallery-item-subtitle">Project Lead · Sensors, A* navigation, EurekaFest</p>
           </div>
         </a>
         <a href="#project-5" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=5" alt="Project Five">
+          <img src="https://picsum.photos/400/400?random=5" alt="Cedars-Sinai AI">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Project Five</p>
-            <p class="gallery-item-subtitle">Brief description of the project</p>
+            <p class="gallery-item-title">Cedars-Sinai — AI & Clinical</p>
+            <p class="gallery-item-subtitle">LLM pipeline · Clinical analytics, 97%+ accuracy</p>
           </div>
         </a>
         <a href="#project-6" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=6" alt="Project Six">
+          <img src="https://picsum.photos/400/400?random=6" alt="VEX AI Robotics">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Project Six</p>
-            <p class="gallery-item-subtitle">Brief description of the project</p>
+            <p class="gallery-item-title">VEX AI Robotics</p>
+            <p class="gallery-item-subtitle">Programming Lead · PyTorch, Jetson, Top 6 Worlds</p>
           </div>
         </a>
       </div>
@@ -410,43 +565,43 @@
         <a href="#project-1" class="gallery-item">
           <img src="https://picsum.photos/400/400?random=1" alt="">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Project One</p>
-            <p class="gallery-item-subtitle">Brief description of the project</p>
+            <p class="gallery-item-title">Humanoid Robotics Research</p>
+            <p class="gallery-item-subtitle">Caltech · Control systems for humanoid robots</p>
           </div>
         </a>
         <a href="#project-2" class="gallery-item">
           <img src="https://picsum.photos/400/400?random=2" alt="">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Project Two</p>
-            <p class="gallery-item-subtitle">Brief description of the project</p>
+            <p class="gallery-item-title">Apple — Activity & Fitness</p>
+            <p class="gallery-item-subtitle">SWE Intern · Summer 2026</p>
           </div>
         </a>
         <a href="#project-3" class="gallery-item">
           <img src="https://picsum.photos/400/400?random=3" alt="">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Project Three</p>
-            <p class="gallery-item-subtitle">Brief description of the project</p>
+            <p class="gallery-item-title">FIRST Robotics Competition</p>
+            <p class="gallery-item-subtitle">Captain & Programming Lead · Autonomous & vision</p>
           </div>
         </a>
         <a href="#project-4" class="gallery-item">
           <img src="https://picsum.photos/400/400?random=4" alt="">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Project Four</p>
-            <p class="gallery-item-subtitle">Brief description of the project</p>
+            <p class="gallery-item-title">Lemelson-MIT InvenTeam</p>
+            <p class="gallery-item-subtitle">Project Lead · Sensors, A* navigation, EurekaFest</p>
           </div>
         </a>
         <a href="#project-5" class="gallery-item">
           <img src="https://picsum.photos/400/400?random=5" alt="">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Project Five</p>
-            <p class="gallery-item-subtitle">Brief description of the project</p>
+            <p class="gallery-item-title">Cedars-Sinai — AI & Clinical</p>
+            <p class="gallery-item-subtitle">LLM pipeline · Clinical analytics, 97%+ accuracy</p>
           </div>
         </a>
         <a href="#project-6" class="gallery-item">
           <img src="https://picsum.photos/400/400?random=6" alt="">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Project Six</p>
-            <p class="gallery-item-subtitle">Brief description of the project</p>
+            <p class="gallery-item-title">VEX AI Robotics</p>
+            <p class="gallery-item-subtitle">Programming Lead · PyTorch, Jetson, Top 6 Worlds</p>
           </div>
         </a>
       </div>
@@ -456,56 +611,56 @@
   <section class="projects-section" aria-label="Projects">
     <article class="project-panel" id="project-1">
       <div class="project-panel-image">
-        <img src="https://picsum.photos/800/600?random=1" alt="Project One">
+        <img src="https://picsum.photos/800/600?random=1" alt="Humanoid Robotics Research">
       </div>
       <div class="project-panel-content">
-        <h2 class="project-panel-title">Project One</h2>
-        <p class="project-panel-description">A robotics project combining sensing and actuation. This work explores how to make systems that adapt in real time and respond to changing environments with precision and reliability.</p>
+        <h2 class="project-panel-title">Humanoid Robotics Research</h2>
+        <p class="project-panel-description">Research Assistant in the Advanced Mechanical Bipedal Robotics Lab at Caltech. Working on control systems for humanoid robots as part of academic research in bipedal locomotion and balance.</p>
       </div>
     </article>
     <article class="project-panel" id="project-2">
       <div class="project-panel-image">
-        <img src="https://picsum.photos/800/600?random=2" alt="Project Two">
+        <img src="https://picsum.photos/800/600?random=2" alt="Apple Activity and Fitness">
       </div>
       <div class="project-panel-content">
-        <h2 class="project-panel-title">Project Two</h2>
-        <p class="project-panel-description">Design and control of a custom robotic platform. From mechanical design to embedded software, this project demonstrates end-to-end development of a mobile system.</p>
+        <h2 class="project-panel-title">Apple — Activity & Fitness</h2>
+        <p class="project-panel-description">Software Engineering Intern (Summer 2026) on the Activity+Fitness team. Building software that helps users track and understand their health and fitness data.</p>
       </div>
     </article>
     <article class="project-panel" id="project-3">
       <div class="project-panel-image">
-        <img src="https://picsum.photos/800/600?random=3" alt="Project Three">
+        <img src="https://picsum.photos/800/600?random=3" alt="FIRST Robotics">
       </div>
       <div class="project-panel-content">
-        <h2 class="project-panel-title">Project Three</h2>
-        <p class="project-panel-description">Computer vision and perception for autonomous navigation. This project integrates cameras and depth sensors to build a robust understanding of the surrounding world.</p>
+        <h2 class="project-panel-title">FIRST Robotics Competition</h2>
+        <p class="project-panel-description">Captain and Programming Lead for a 100+ person team. Led the Programming subteam; built autonomous control and perception systems in Java. Set up control and vision test benches with NI LabVIEW and real-time object-tracking pipelines. Los Angeles Regional Winner (2023), Archimedes Division at World Championships (Top 24), Beach Blitz Winner (2022).</p>
       </div>
     </article>
     <article class="project-panel" id="project-4">
       <div class="project-panel-image">
-        <img src="https://picsum.photos/800/600?random=4" alt="Project Four">
+        <img src="https://picsum.photos/800/600?random=4" alt="Lemelson-MIT InvenTeam">
       </div>
       <div class="project-panel-content">
-        <h2 class="project-panel-title">Project Four</h2>
-        <p class="project-panel-description">Manipulation and grasping with robotic arms. Focus on planning and execution of pick-and-place tasks in semi-structured environments.</p>
+        <h2 class="project-panel-title">Lemelson-MIT InvenTeam</h2>
+        <p class="project-panel-description">Project Lead for a team of 15. Integrated ultra-wideband, LiDAR, infrared, and Bluetooth sensors with an A* navigation algorithm in C++. Developed custom housing for Bluetooth receivers to improve signal accuracy and obstacle detection. Managed electrical assembly, CAD design, and in-house manufacturing. Secured $7,500 from MIT and presented at EurekaFest.</p>
       </div>
     </article>
     <article class="project-panel" id="project-5">
       <div class="project-panel-image">
-        <img src="https://picsum.photos/800/600?random=5" alt="Project Five">
+        <img src="https://picsum.photos/800/600?random=5" alt="Cedars-Sinai AI">
       </div>
       <div class="project-panel-content">
-        <h2 class="project-panel-title">Project Five</h2>
-        <p class="project-panel-description">Multi-robot coordination and swarm behaviors. Experiments with communication, formation control, and emergent strategies for collaborative tasks.</p>
+        <h2 class="project-panel-title">Cedars-Sinai — AI & Clinical Analytics</h2>
+        <p class="project-panel-description">AI Intern building an LLM pipeline to turn unstructured clinical notes into structured data for hospital analytics. Developed a web app with HTML/CSS, JavaScript, Python, and Sanic for physicians and data analysts. Validated on 50,000+ patient notes with over 97% accuracy. Integrated into live systems using SQL, AWS S3, and Azure.</p>
       </div>
     </article>
     <article class="project-panel" id="project-6">
       <div class="project-panel-image">
-        <img src="https://picsum.photos/800/600?random=6" alt="Project Six">
+        <img src="https://picsum.photos/800/600?random=6" alt="VEX AI Robotics">
       </div>
       <div class="project-panel-content">
-        <h2 class="project-panel-title">Project Six</h2>
-        <p class="project-panel-description">Human-robot interaction and safety. This project addresses how robots can work alongside people safely and intuitively, with clear feedback and predictable motion.</p>
+        <h2 class="project-panel-title">VEX AI Robotics Competition</h2>
+        <p class="project-panel-description">Programming Lead. Developed an autonomous perception system using cameras and infrared with PyTorch on an NVIDIA Jetson. Competed in the fully autonomous robotics track—Top 6 at the World Championships and Think Award Winner (2021).</p>
       </div>
     </article>
   </section>
