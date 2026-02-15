@@ -95,69 +95,19 @@
 
     .hero-floating-images .floating-card {
       position: absolute;
-      width: 140px;
-      height: 140px;
       pointer-events: auto;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      box-shadow: none;
+      background: transparent;
       transition: opacity 0.6s ease;
-    }
-
-    .hero-floating-images .floating-card:hover {
-      opacity: 0.12;
-    }
-
-    .hero-floating-images .floating-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hero-floating-images .floating-card-1 {
-      top: 12%;
-      left: calc(18%);
-      transform: rotate(-6deg);
-    }
-
-    .hero-floating-images .floating-card-2 {
-      top: 16%;
-      right: 19%;
-      transform: rotate(4deg);
-      z-index: 1;
-      box-shadow: none;
-      width: 200px;
-      height: 200px;
-    }
-
-    .hero-floating-images .floating-card-3 { 
-      bottom: 24%;
-      left: 22%;
-      transform: rotate(3deg);
-      width: 200px;
-      height: auto;
-      box-shadow: none;
-    }
-
-    .hero-floating-images .floating-card-3 img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .hero-floating-images .floating-card-4 {
-      top: 38%;
-      right: 14%;
-      transform: rotate(-5deg);
-      z-index: 0;
     }
 
     .hero-floating-images .floating-card-star {
       width: 88px;
       height: 88px;
-      right: 14%;
-      top: 38%;
+      right: 28%;
+      top: 42%;
       transform: translateY(-50%) rotate(12deg);
       box-shadow: none;
       background: transparent;
@@ -165,7 +115,10 @@
     }
 
     .hero-floating-images .floating-card-star img {
+      width: 100%;
+      height: 100%;
       object-fit: contain;
+      display: block;
     }
 
     .hero-floating-images .floating-card-star:hover {
@@ -175,8 +128,8 @@
     .hero-floating-images .floating-card-star2 {
       width: 88px;
       height: 88px;
-      left: 18%;
-      top: 48%;
+      left: 28%;
+      top: 44%;
       transform: translateY(-50%) rotate(-8deg);
       box-shadow: none;
       background: transparent;
@@ -184,10 +137,35 @@
     }
 
     .hero-floating-images .floating-card-star2 img {
+      width: 100%;
+      height: 100%;
       object-fit: contain;
+      display: block;
     }
 
     .hero-floating-images .floating-card-star2:hover {
+      opacity: 0.5;
+    }
+
+    .hero-floating-images .floating-card-star2-right {
+      width: 44px;
+      height: 44px;
+      right: 31.5%;
+      top: 32%;
+      transform: translateY(-50%) rotate(6deg);
+      box-shadow: none;
+      background: transparent;
+      z-index: 1;
+    }
+
+    .hero-floating-images .floating-card-star2-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .hero-floating-images .floating-card-star2-right:hover {
       opacity: 0.5;
     }
 
@@ -433,15 +411,17 @@
     }
 
     .project-panel-title {
-      font-family: "PP Neue World", Georgia, serif;
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       font-size: clamp(1.75rem, 3vw, 2.25rem);
-      font-weight: 700;
+      font-weight: 600;
       color: #222;
       margin: 0 0 1rem 0;
       line-height: 1.2;
     }
 
     .project-panel-description {
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      font-weight: 600;
       font-size: 1.05rem;
       color: #444;
       line-height: 1.65;
@@ -472,26 +452,6 @@
 </head>
 <body>
   <section class="hero-section">
-    <div class="hero-floating-images" aria-hidden="true">
-      <div class="floating-card floating-card-1">
-        <img src="images/programming.png" alt="">
-      </div>
-      <div class="floating-card floating-card-star2">
-        <img src="images/star2.png" alt="">
-      </div>
-      <div class="floating-card floating-card-2">
-        <img src="images/inventeam-walker-rendered.png" alt="">
-      </div>
-      <div class="floating-card floating-card-3">
-        <img src="images/drowning-prevention.png" alt="">
-      </div>
-      <div class="floating-card floating-card-4">
-        <img src="images/presenting.png" alt="">
-      </div>
-      <div class="floating-card floating-card-star">
-        <img src="images/star.png" alt="">
-      </div>
-    </div>
     <div class="hero">
       <p class="hero-tag">Welcome to my portfolio!</p>
       <h1 class="hero-title">SAMANTHA CHANG</h1>
@@ -513,95 +473,106 @@
         </div>
       </div>
     </div>
+    <div class="hero-floating-images" aria-hidden="true">
+      <div class="floating-card floating-card-star2">
+        <img src="images/star2.png" alt="">
+      </div>
+      <div class="floating-card floating-card-star">
+        <img src="images/star.png" alt="">
+      </div>
+      <div class="floating-card floating-card-star2-right">
+        <img src="images/star2.png" alt="">
+      </div>
+    </div>
   </section>
 
   <div class="gallery-wrapper">
     <div class="gallery-track">
       <div class="gallery">
         <a href="#project-1" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=1" alt="Humanoid Robotics Research">
+          <img src="images/project1-small.png" alt="Humanoid Robotics Research">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Humanoid Robotics Research</p>
-            <p class="gallery-item-subtitle">Caltech · Control systems for humanoid robots</p>
+            <p class="gallery-item-title">Assistive Robotic Walker</p>
+            <p class="gallery-item-subtitle">Lemelson-MIT InvenTeam · CAD, manufacturing, EurekaFest</p>
           </div>
         </a>
         <a href="#project-2" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=2" alt="Apple Activity & Fitness">
-          <div class="gallery-item-caption">
-            <p class="gallery-item-title">Apple — Activity & Fitness</p>
-            <p class="gallery-item-subtitle">SWE Intern · Summer 2026</p>
-          </div>
-        </a>
-        <a href="#project-3" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=3" alt="FIRST Robotics">
+          <img src="images/project2-small.png" alt="FIRST Robotics">
           <div class="gallery-item-caption">
             <p class="gallery-item-title">FIRST Robotics Competition</p>
             <p class="gallery-item-subtitle">Captain & Programming Lead · Autonomous & vision</p>
           </div>
         </a>
-        <a href="#project-4" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=4" alt="Lemelson-MIT InvenTeam">
+        <a href="#project-3" class="gallery-item">
+          <img src="images/project3-small.png" alt="Drowning Detection">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Lemelson-MIT InvenTeam</p>
-            <p class="gallery-item-subtitle">Project Lead · Sensors, A* navigation, EurekaFest</p>
+            <p class="gallery-item-title">Drowning Detection Assistant</p>
+            <p class="gallery-item-subtitle">Lemelson-MIT InvenTeam · Sensors, Bluetooth, $7,500 grant</p>
+          </div>
+        </a>
+        <a href="#project-4" class="gallery-item">
+          <img src="images/project4-small.png" alt="VEX AI Robotics">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">VEX AI Robotics Competition</p>
+            <p class="gallery-item-subtitle">Programming Lead · PyTorch, Jetson, Top 6 Worlds</p>
           </div>
         </a>
         <a href="#project-5" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=5" alt="Cedars-Sinai AI">
+          <img src="images/project5-small.png" alt="Electronic Face Mask">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Cedars-Sinai — AI & Clinical</p>
-            <p class="gallery-item-subtitle">LLM pipeline · Clinical analytics, 97%+ accuracy</p>
+            <p class="gallery-item-title">Electronic Face Mask</p>
+            <p class="gallery-item-subtitle">Wearable electronics · Interactive display</p>
           </div>
         </a>
         <a href="#project-6" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=6" alt="VEX AI Robotics">
+          <img src="images/project6-small.png" alt="Bipedal Robot">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">VEX AI Robotics</p>
-            <p class="gallery-item-subtitle">Programming Lead · PyTorch, Jetson, Top 6 Worlds</p>
+            <p class="gallery-item-title">Bipedal Robot</p>
+            <p class="gallery-item-subtitle">Caltech · Control systems for humanoid robots</p>
           </div>
         </a>
       </div>
       <div class="gallery" aria-hidden="true">
         <a href="#project-1" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=1" alt="">
+          <img src="images/project1-small.png" alt="">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Humanoid Robotics Research</p>
-            <p class="gallery-item-subtitle">Caltech · Control systems for humanoid robots</p>
+            <p class="gallery-item-title">Assistive Robotic Walker</p>
+            <p class="gallery-item-subtitle">Lemelson-MIT InvenTeam · CAD, manufacturing, EurekaFest</p>
           </div>
         </a>
         <a href="#project-2" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=2" alt="">
-          <div class="gallery-item-caption">
-            <p class="gallery-item-title">Apple — Activity & Fitness</p>
-            <p class="gallery-item-subtitle">SWE Intern · Summer 2026</p>
-          </div>
-        </a>
-        <a href="#project-3" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=3" alt="">
+          <img src="images/project2-small.png" alt="">
           <div class="gallery-item-caption">
             <p class="gallery-item-title">FIRST Robotics Competition</p>
             <p class="gallery-item-subtitle">Captain & Programming Lead · Autonomous & vision</p>
           </div>
         </a>
-        <a href="#project-4" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=4" alt="">
+        <a href="#project-3" class="gallery-item">
+          <img src="images/project3-small.png" alt="">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Lemelson-MIT InvenTeam</p>
-            <p class="gallery-item-subtitle">Project Lead · Sensors, A* navigation, EurekaFest</p>
+            <p class="gallery-item-title">Drowning Detection Assistant</p>
+            <p class="gallery-item-subtitle">Lemelson-MIT InvenTeam · Sensors, Bluetooth, $7,500 grant</p>
+          </div>
+        </a>
+        <a href="#project-4" class="gallery-item">
+          <img src="images/project4-small.png" alt="">
+          <div class="gallery-item-caption">
+            <p class="gallery-item-title">VEX AI Robotics Competition</p>
+            <p class="gallery-item-subtitle">Programming Lead · PyTorch, Jetson, Top 6 Worlds</p>
           </div>
         </a>
         <a href="#project-5" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=5" alt="">
+          <img src="images/project5-small.png" alt="">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">Cedars-Sinai — AI & Clinical</p>
-            <p class="gallery-item-subtitle">LLM pipeline · Clinical analytics, 97%+ accuracy</p>
+            <p class="gallery-item-title">Electronic Face Mask</p>
+            <p class="gallery-item-subtitle">Wearable electronics · Interactive display</p>
           </div>
         </a>
         <a href="#project-6" class="gallery-item">
-          <img src="https://picsum.photos/400/400?random=6" alt="">
+          <img src="images/project6-small.png" alt="">
           <div class="gallery-item-caption">
-            <p class="gallery-item-title">VEX AI Robotics</p>
-            <p class="gallery-item-subtitle">Programming Lead · PyTorch, Jetson, Top 6 Worlds</p>
+            <p class="gallery-item-title">Bipedal Robot</p>
+            <p class="gallery-item-subtitle">Caltech · Control systems for humanoid robots</p>
           </div>
         </a>
       </div>
@@ -611,56 +582,56 @@
   <section class="projects-section" aria-label="Projects">
     <article class="project-panel" id="project-1">
       <div class="project-panel-image">
-        <img src="https://picsum.photos/800/600?random=1" alt="Humanoid Robotics Research">
+        <img src="images/project1-big.png" alt="Assistive Robotic Walker">
       </div>
       <div class="project-panel-content">
-        <h2 class="project-panel-title">Humanoid Robotics Research</h2>
-        <p class="project-panel-description">Research Assistant in the Advanced Mechanical Bipedal Robotics Lab at Caltech. Working on control systems for humanoid robots as part of academic research in bipedal locomotion and balance.</p>
+        <h2 class="project-panel-title">Lemelson-MIT InvenTeam — Assistive Robotic Walker</h2>
+        <p class="project-panel-description">Project Lead for a team of 15 students. Led technical documentation and team communication. Integrated ultra-wideband, LiDAR, infrared, and Bluetooth sensors with an A* navigation algorithm in C++. Assembled the electrical system, assisted in design with CAD, and manufactured parts from our in-house machine shop. Secured $7,500 funding from MIT and presented at EurekaFest.</p>
       </div>
     </article>
     <article class="project-panel" id="project-2">
       <div class="project-panel-image">
-        <img src="https://picsum.photos/800/600?random=2" alt="Apple Activity and Fitness">
-      </div>
-      <div class="project-panel-content">
-        <h2 class="project-panel-title">Apple — Activity & Fitness</h2>
-        <p class="project-panel-description">Software Engineering Intern (Summer 2026) on the Activity+Fitness team. Building software that helps users track and understand their health and fitness data.</p>
-      </div>
-    </article>
-    <article class="project-panel" id="project-3">
-      <div class="project-panel-image">
-        <img src="https://picsum.photos/800/600?random=3" alt="FIRST Robotics">
+        <img src="images/project2-small.png" alt="FIRST Robotics Competition">
       </div>
       <div class="project-panel-content">
         <h2 class="project-panel-title">FIRST Robotics Competition</h2>
         <p class="project-panel-description">Captain and Programming Lead for a 100+ person team. Led the Programming subteam; built autonomous control and perception systems in Java. Set up control and vision test benches with NI LabVIEW and real-time object-tracking pipelines. Los Angeles Regional Winner (2023), Archimedes Division at World Championships (Top 24), Beach Blitz Winner (2022).</p>
       </div>
     </article>
+    <article class="project-panel" id="project-3">
+      <div class="project-panel-image">
+        <img src="images/project3-big.png" alt="Drowning Detection Assistant">
+      </div>
+      <div class="project-panel-content">
+        <h2 class="project-panel-title">Lemelson-MIT InvenTeam — Drowning Detection Assistant</h2>
+        <p class="project-panel-description">Project Lead for a team of 15. Integrated ultra-wideband, LiDAR, infrared, and Bluetooth sensors; developed custom housing for Bluetooth receivers to improve signal accuracy and obstacle detection. Connects with a drowning detection device to report signs of distress. Secured $7,500 from MIT and presented at EurekaFest.</p>
+      </div>
+    </article>
     <article class="project-panel" id="project-4">
       <div class="project-panel-image">
-        <img src="https://picsum.photos/800/600?random=4" alt="Lemelson-MIT InvenTeam">
-      </div>
-      <div class="project-panel-content">
-        <h2 class="project-panel-title">Lemelson-MIT InvenTeam</h2>
-        <p class="project-panel-description">Project Lead for a team of 15. Integrated ultra-wideband, LiDAR, infrared, and Bluetooth sensors with an A* navigation algorithm in C++. Developed custom housing for Bluetooth receivers to improve signal accuracy and obstacle detection. Managed electrical assembly, CAD design, and in-house manufacturing. Secured $7,500 from MIT and presented at EurekaFest.</p>
-      </div>
-    </article>
-    <article class="project-panel" id="project-5">
-      <div class="project-panel-image">
-        <img src="https://picsum.photos/800/600?random=5" alt="Cedars-Sinai AI">
-      </div>
-      <div class="project-panel-content">
-        <h2 class="project-panel-title">Cedars-Sinai — AI & Clinical Analytics</h2>
-        <p class="project-panel-description">AI Intern building an LLM pipeline to turn unstructured clinical notes into structured data for hospital analytics. Developed a web app with HTML/CSS, JavaScript, Python, and Sanic for physicians and data analysts. Validated on 50,000+ patient notes with over 97% accuracy. Integrated into live systems using SQL, AWS S3, and Azure.</p>
-      </div>
-    </article>
-    <article class="project-panel" id="project-6">
-      <div class="project-panel-image">
-        <img src="https://picsum.photos/800/600?random=6" alt="VEX AI Robotics">
+        <img src="images/project4-small.png" alt="VEX AI Robotics Competition">
       </div>
       <div class="project-panel-content">
         <h2 class="project-panel-title">VEX AI Robotics Competition</h2>
         <p class="project-panel-description">Programming Lead. Developed an autonomous perception system using cameras and infrared with PyTorch on an NVIDIA Jetson. Competed in the fully autonomous robotics track—Top 6 at the World Championships and Think Award Winner (2021).</p>
+      </div>
+    </article>
+    <article class="project-panel" id="project-5">
+      <div class="project-panel-image">
+        <img src="images/project5-small.png" alt="Electronic Face Mask">
+      </div>
+      <div class="project-panel-content">
+        <h2 class="project-panel-title">Electronic Face Mask</h2>
+        <p class="project-panel-description">A wearable electronics project featuring an interactive electronic face mask. Combines custom hardware, embedded systems, and display elements for a hands-on exploration of wearable tech and user interface design.</p>
+      </div>
+    </article>
+    <article class="project-panel" id="project-6">
+      <div class="project-panel-image">
+        <img src="images/project6-small.png" alt="Bipedal Robot">
+      </div>
+      <div class="project-panel-content">
+        <h2 class="project-panel-title">Bipedal Robot</h2>
+        <p class="project-panel-description">Research in the Advanced Mechanical Bipedal Robotics Lab at Caltech. Working on control systems for humanoid robots as part of academic research in bipedal locomotion, balance, and dynamic walking.</p>
       </div>
     </article>
   </section>
