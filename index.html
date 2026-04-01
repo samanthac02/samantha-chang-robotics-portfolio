@@ -3,37 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>Samantha Chang's Portfolio</title>
   <style>
     @font-face {
-      font-family: "PP Neue World";
-      src: url("fonts/PPNeueWorld-CondensedRegular.otf") format("opentype");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "SF Pro Text";
-      src: url("fonts/SF-Pro-Text-Light.otf") format("opentype");
-      font-weight: 300;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "SF Pro Text";
+      font-family: Georgia, "Times New Roman", serif;
       src: url("fonts/SF-Pro-Text-Regular.otf") format("opentype");
       font-weight: 400;
       font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "SF Pro Text";
-      src: url("fonts/SF-Pro-Text-RegularItalic.otf") format("opentype");
-      font-weight: 400;
-      font-style: italic;
       font-display: swap;
     }
 
@@ -45,467 +21,627 @@
       font-display: swap;
     }
 
-    @font-face {
-      font-family: "SF Pro Text";
-      src: url("fonts/SF-Pro-Text-Semibold.otf") format("opentype");
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap;
-    }
-
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --page-bg: #ffffff;
+      --panel-bg: #ffffff;
+      --ink: #171717;
+      --muted: #5a5a5a;
+      --line: #1f1f1f;
+      --accent: #f4ea2a;
+      --footer: #212831;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     body {
       margin: 0;
-      padding: 0;
-      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      background: #f5f2ed;
+      background: var(--page-bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
     }
 
-    .layout {
-      display: flex;
+    .canvas {
+      width: min(100%, 1024px);
+      margin: 0 auto;
+      background: var(--panel-bg);
       min-height: 100vh;
-      gap: 16rem;
+      padding: calc(3rem + 12px) 1rem 0;
     }
 
-    .layout-left {
-      width: 36%;
-      max-width: 420px;
-      min-width: 280px;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      padding: 2.5rem 2rem 2.5rem 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .top-block {
+      display: grid;
+      grid-template-columns: 1fr 290px;
+      align-items: start;
+      gap: 1.25rem;
+      min-height: 320px;
+      padding: 0.35rem 0 1.25rem;
     }
 
-    .hero-section {
-      position: relative;
-      width: 100%;
-      text-align: left;
-    }
-
-    .hero {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-tag {
-      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      font-size: 0.875rem;
-      font-weight: 300;
+    .eyebrow {
+      font-size: 0.55rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #6b6b6b;
-      margin: 0 0 0.75rem 0;
+      margin: 0 0 0.35rem;
+      color: var(--muted);
     }
 
-    .hero-profile-pic {
-      width: 140px;
-      height: 140px;
+    .top-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+
+    .title-stack {
+      margin: 0;
+      font-size: clamp(3rem, 8.5vw, 5.2rem);
+      line-height: 0.92;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1b1b1b;
+    }
+
+    #typed-name {
+      white-space: pre-line;
+      line-height: calc(1em + 4px);
+      display: inline;
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 0.9em;
+      margin-left: 6px;
+      vertical-align: text-bottom;
+      background: #1b1b1b;
+      animation: blink-cursor 0.9s steps(1, end) infinite;
+    }
+
+    .typing-cursor.is-hidden {
+      opacity: 0;
+    }
+
+    @keyframes blink-cursor {
+      0%, 45% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+
+    .micro-note {
+      width: 290px;
+      border-left: 4px solid #000;
+      padding-left: 20px;
+      font-size: 18pt;
+      line-height: 1.35;
+      color: #2d2d2d;
+      justify-self: end;
+      margin-top: 0.2rem;
+    }
+
+    .top-profile-pic {
+      width: 128px;
+      height: 128px;
       border-radius: 50%;
       object-fit: cover;
       display: block;
-      margin: 0 0 1.25rem 0;
+      margin: 0;
+      flex-shrink: 0;
     }
 
-    .hero-title {
-      font-family: "PP Neue World", Georgia, serif;
-      font-size: clamp(2.25rem, 4.5vw, 3.5rem);
-      font-weight: 400;
-      color: #000;
-      margin: 0 0 1rem 0;
-      line-height: 1.2;
-    }
 
-    @media (max-width: 900px) {
-      .hero-title {
-        font-size: clamp(2rem, 6vw, 2.75rem);
-      }
-    }
-
-    .hero-title em {
-      font-style: italic;
-      font-family: "PP Neue World", Georgia, serif;
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-      color: #444;
-      line-height: 1.5;
-      margin: 0 0 0.25rem 0;
-    }
-
-    .hero-actions {
-      margin-top: 1.5rem;
-      display: flex;
+    .top-links {
+      margin-top: calc(0.85rem + 12px);
+      display: grid;
+      grid-template-columns: 100px 50px 50px 50px;
+      column-gap: 10px;
       align-items: center;
-      justify-content: flex-start;
-      gap: 1.25rem;
-      flex-wrap: wrap;
+      justify-content: start;
     }
 
-    .hero-actions .btn-resume {
-      display: inline-block;
-      padding: 0.6rem 1.25rem;
-      font-size: 0.9rem;
-      font-family: inherit;
-      border-radius: 6px;
+    .top-links a {
       text-decoration: none;
-      cursor: pointer;
-      border: none;
-      background: #222;
-      color: #fff;
-      transition: opacity 0.2s;
-    }
-
-    .hero-actions .btn-resume:hover {
-      opacity: 0.9;
-    }
-
-    .hero-icon-links {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .hero-icon-links a {
-      display: flex;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1b1b1b;
+      border: 1px solid #bcbcbc;
+      padding: 0.42rem 0.72rem;
+      border-radius: 2px;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      background: #e8e4de;
-      color: #333;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
+      min-height: 40px;
+      line-height: 1;
     }
 
-    .hero-icon-links a:hover {
-      background: #222;
-      color: #fff;
-    }
-
-    .hero-icon-links svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-
-    .layout-right {
-      flex: 1;
-      padding: 2.5rem 2.5rem 4rem 2rem;
-      overflow-y: auto;
-      min-width: 0;
-    }
-
-    .projects-section {
-      padding: 3rem 0 4rem;
-      max-width: 900px;
-    }
-
-    .project-panel {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+    .top-links .icon-btn {
+      border: 0;
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+      min-height: 40px;
+      width: 50px;
+      display: inline-flex;
       align-items: center;
-      min-height: 50vh;
-      padding: 5rem 0;
-      opacity: 0;
-      transform: translateY(60px);
-      transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      justify-content: center;
+      font-size: 0;
+      line-height: 0;
     }
 
-    .project-panel.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .project-panel:nth-child(even) {
-      direction: rtl;
-    }
-
-    .project-panel:nth-child(even) > * {
-      direction: ltr;
-    }
-
-    .project-panel-image {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
-      opacity: 0;
-      transform: translateY(40px) scale(0.98);
-      transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
-                  transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
-    }
-
-    .project-panel.is-visible .project-panel-image {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .project-panel-image img {
-      width: 100%;
-      height: auto;
+    .top-links .icon-btn svg {
+      width: 28px;
+      height: 28px;
+      fill: #1b1b1b;
       display: block;
+      transition: fill 0.22s ease;
+    }
+
+    .top-links .icon-btn:hover svg {
+      fill: #6a6a6a;
+    }
+
+    .top-links .resume-btn {
+      width: 100px;
+      height: 40px;
+      border-radius: 0;
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+    }
+
+    .top-links .resume-btn:hover {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+    }
+
+
+    .card-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: stretch;
+      gap: 1.2rem;
+      padding: 0.6rem 0 1.5rem;
+    }
+
+    .card-grid-3 + .card-grid-3 {
+      margin-top: 40px;
+    }
+
+    .mini-card,
+    .project-thumb,
+    .image-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .mini-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      height: 100%;
+    }
+
+    .mini-thumb {
+      width: 100%;
       aspect-ratio: 4 / 3;
       object-fit: cover;
+      display: block;
+      border-bottom: 6px solid var(--accent);
     }
 
-    .project-panel-content {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s,
-                  transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+    .mini-meta {
+      margin: 40px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 10pt;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9a9a9a;
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      height: 2.6em;
+      min-height: 2.6em;
+      max-height: 2.6em;
+      line-height: 1.3;
+      overflow: hidden;
     }
 
-    .project-panel.is-visible .project-panel-content {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .project-panel-title {
-      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      font-size: clamp(1.35rem, 2.25vw, 1.65rem);
+    .mini-meta strong {
+      color: #1f1f1f;
+      letter-spacing: 0.03em;
       font-weight: 600;
-      color: #222;
-      margin: 0 0 0.35rem 0;
-      line-height: 1.2;
     }
 
-    .project-panel-subtitle {
-      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      font-size: 0.95rem;
-      font-style: italic;
-      color: #666;
-      margin: 0 0 1rem 0;
-      line-height: 1.4;
+    .mini-meta-label {
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      color: #8c8c8c;
     }
 
-    .project-panel-description {
-      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    .mini-meta-entity {
+      display: block;
+      margin-top: 2px;
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      color: #111;
+    }
+
+    .mini-title {
+      margin: 50px 0 0;
+      font-size: 20pt;
+      line-height: 1.18;
+      color: #1d1d1d;
       font-weight: 500;
-      font-size: 1.05rem;
-      color: #444;
-      line-height: 1.65;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      line-clamp: 3;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      min-height: 3.54em;
+      max-height: 3.54em;
+    }
+
+    .mini-title span {
+      background-image: linear-gradient(var(--accent), var(--accent));
+      background-repeat: no-repeat;
+      background-position: 0 92%;
+      background-size: 0% 0.52em;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      padding: 0 2px;
+      transition: background-size 0.25s ease;
+    }
+
+    .mini-card:hover .mini-title span {
+      background-size: 100% 0.52em;
+    }
+
+    .mini-rule {
+      display: block;
+      height: 4px;
+      width: 100%;
+      background: #121212;
+      margin-top: 40px;
+    }
+
+    .split-intro {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.4rem 0 1.1rem;
+    }
+
+    .intro-copy {
+      font-size: 0.56rem;
+      color: #515151;
+      line-height: 1.5;
+      max-width: 230px;
+    }
+
+    .chip-avatars {
+      display: flex;
+      gap: 0.65rem;
+      align-items: center;
+    }
+
+    .chip-avatars img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 1px solid #d7d7d7;
+    }
+
+    .hero-panel {
+      margin-top: 0.1rem;
+      background: #fff;
+      border: 1px solid #efefef;
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 16 / 8;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-caption {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      padding: 0.95rem;
+      border-top: 1px solid #ececec;
+    }
+
+    .hero-caption p {
       margin: 0;
+      font-size: 0.52rem;
+      color: #555;
+      line-height: 1.5;
     }
 
-    .project-panel-description ul {
-      margin: 0;
-      padding-left: 1.35rem;
-      list-style: disc;
+    .btn-tiny {
+      margin-top: 0.45rem;
+      display: inline-block;
+      background: var(--accent);
+      color: #161616;
+      font-size: 0.45rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.27rem 0.48rem;
     }
 
-    .project-panel-description li {
-      margin-bottom: 0.5rem;
+    .section-divider {
+      margin: 1rem 0;
+      height: 1px;
+      background: #c8c8c8;
     }
 
-    .project-panel-description li:last-child {
-      margin-bottom: 0;
+    .card-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
     }
 
-    @media (max-width: 768px) {
-      .layout {
-        flex-direction: column;
+    .image-card img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      display: block;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .image-card h3 {
+      margin: 0.4rem 0 0;
+      font-size: 0.56rem;
+      line-height: 1.42;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+      margin-top: 0.9rem;
+    }
+
+    .project-thumb img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .project-thumb p {
+      margin: 0.42rem 0 0;
+      font-size: 0.52rem;
+      color: #3d3d3d;
+      line-height: 1.45;
+      min-height: 2.1em;
+    }
+
+    .cta-strip {
+      margin: 1rem 0 0.8rem;
+      border: 1px solid #d8d8d8;
+      background: #fff;
+      padding: 0.28rem;
+    }
+
+    .cta-strip a {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.62rem;
+      color: #1d1d1d;
+      background: var(--accent);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0.32rem;
+    }
+
+    .meta-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .meta-links a {
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.62rem;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: var(--footer);
+      color: #d4d8dd;
+      margin: 0 -1rem;
+      padding: 1.1rem 1rem 0.8rem;
+    }
+
+    .footer-title {
+      margin: 0 0 0.75rem;
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      letter-spacing: -0.02em;
+      color: #f2f4f7;
+      font-weight: 500;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid #3c4652;
+    }
+
+    .footer-links,
+    .footer-contact {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.28rem 0.8rem;
+      align-content: start;
+    }
+
+    .footer-links a,
+    .footer-contact a {
+      color: #b8c0c9;
+      text-decoration: none;
+      font-size: 0.52rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.47rem;
+      color: #8f98a2;
+      padding-top: 0.55rem;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 0.45rem;
+    }
+
+    .social-row a {
+      color: #8f98a2;
+      text-decoration: none;
+    }
+
+    @media (max-width: 760px) {
+      .card-grid-3,
+      .news-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .layout-left {
-        width: 100%;
-        max-width: none;
-        min-width: 0;
-        height: auto;
-        position: relative;
-        padding: 2rem 1.5rem;
-      }
-
-      .hero-section {
-        text-align: center;
-      }
-
-      .hero-profile-pic {
-        margin-left: auto;
-        margin-right: auto;
-        width: 120px;
-        height: 120px;
-      }
-
-      .hero-actions {
-        justify-content: center;
-      }
-
-      .layout-right {
-        padding: 1.5rem 1.5rem 3rem;
-      }
-
-      .project-panel {
+      .card-grid-2,
+      .hero-caption,
+      .meta-links,
+      .footer-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
-        min-height: auto;
-        direction: ltr;
       }
 
-      .project-panel:nth-child(even) {
-        direction: ltr;
+      .footer-links,
+      .footer-contact {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .project-panel-image {
-        order: 1;
+      .top-left {
+        align-items: center;
       }
 
-      .project-panel-content {
-        order: 2;
+      .top-profile-pic {
+        width: 100px;
+        height: 100px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="layout">
-    <aside class="layout-left">
-      <section class="hero-section">
-        <div class="hero">
-          <p class="hero-tag">Welcome to my portfolio!</p>
-          <img src="images/profile-pic.jpeg" alt="Samantha Chang" class="hero-profile-pic">
-          <h1 class="hero-title">SAMANTHA CHANG</h1>
-          <p class="hero-subtitle">Incoming SWE Intern @ Apple.</p>
-          <p class="hero-subtitle">Caltech, Computer Science + Control Systems + Robotics.</p>
-          <p class="hero-subtitle">ArtCenter College of Design, Interaction Design (dual-enrolled).</p>
-          <div class="hero-actions">
-            <a href="documents/Samantha Chang - Resume - Boston Dynamics.pdf" class="btn-resume" target="_blank" rel="noopener">Resumé</a>
-            <div class="hero-icon-links">
-              <a href="https://www.linkedin.com/in/samantha-chang8/" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              </a>
-              <a href="https://github.com/samanthac02" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-              </a>
-              <a href="mailto:schang8@caltech.edu" aria-label="Email" title="Email">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              </a>
-            </div>
-          </div>
+  <div class="canvas">
+    <section class="top-block">
+      <div class="top-left">
+        <h1 class="title-stack"><span id="typed-name" aria-label="Samantha Chang"></span><span class="typing-cursor" aria-hidden="true"></span></h1>
+      </div>
+      <div class="micro-note">
+        Computer Science + Robotics @ Caltech<br><br>
+        Software Engineering Intern @ Apple
+        <div class="top-links">
+          <a class="resume-btn" href="documents/Samantha Chang - Resume - Boston Dynamics.pdf" target="_blank" rel="noopener">Resume</a>
+          <a class="icon-btn" href="https://www.linkedin.com/in/samantha-chang8/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a class="icon-btn" href="https://github.com/samanthac02" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a class="icon-btn" href="mailto:schang8@caltech.edu" aria-label="Email" title="Email">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+          </a>
         </div>
-      </section>
-    </aside>
+      </div>
+    </section>
 
-    <main class="layout-right">
-  <section class="projects-section" aria-label="Project details">
-    <article class="project-panel" id="project-1">
-      <div class="project-panel-image">
-        <img src="images/project1-big.png" alt="Assistive Robotic Walker">
-      </div>
-      <div class="project-panel-content">
-        <h2 class="project-panel-title">Assistive Robotic Walker</h2>
-        <p class="project-panel-subtitle">Lemelson-MIT InvenTeam · Assistive mobility</p>
-        <div class="project-panel-description">
-          <ul>
-            <li>Project Lead for a team of 15 students; led technical documentation and team communication.</li>
-            <li>Integrated ultra-wideband, LiDAR, infrared, and Bluetooth sensors with an A* navigation algorithm in C++.</li>
-            <li>Assembled the electrical system, assisted in design with CAD, and manufactured parts from our in-house machine shop.</li>
-            <li>Secured $7,500 funding from MIT and presented at EurekaFest.</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-    <article class="project-panel" id="project-2">
-      <div class="project-panel-image">
-        <img src="images/project2-small.png" alt="FIRST Robotics Competition">
-      </div>
-      <div class="project-panel-content">
-        <h2 class="project-panel-title">FIRST Robotics Competition</h2>
-        <p class="project-panel-subtitle">Captain & Programming Lead · 100+ person team</p>
-        <div class="project-panel-description">
-          <ul>
-            <li>Led the Programming subteam; built autonomous control and perception systems in Java.</li>
-            <li>Set up control and vision test benches with NI LabVIEW and real-time object-tracking pipelines.</li>
-            <li>Los Angeles Regional Winner (2023), Archimedes Division at World Championships (Top 24), Beach Blitz Winner (2022).</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-    <article class="project-panel" id="project-3">
-      <div class="project-panel-image">
-        <img src="images/project3-big.png" alt="Drowning Detection Assistant">
-      </div>
-      <div class="project-panel-content">
-        <h2 class="project-panel-title">Drowning Detection Assistant</h2>
-        <p class="project-panel-subtitle">Lemelson-MIT InvenTeam · Drowning detection device</p>
-        <div class="project-panel-description">
-          <ul>
-            <li>Project Lead for a team of 15.</li>
-            <li>Integrated ultra-wideband, LiDAR, infrared, and Bluetooth sensors; developed custom housing for Bluetooth receivers to improve signal accuracy and obstacle detection.</li>
-            <li>Connects with a drowning detection device to report signs of distress.</li>
-            <li>Secured $7,500 from MIT and presented at EurekaFest.</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-    <article class="project-panel" id="project-4">
-      <div class="project-panel-image">
-        <img src="images/project4-small.png" alt="VEX AI Robotics Competition">
-      </div>
-      <div class="project-panel-content">
-        <h2 class="project-panel-title">VEX AI Robotics Competition</h2>
-        <p class="project-panel-subtitle">Programming Lead · Autonomous robotics, PyTorch & Jetson</p>
-        <div class="project-panel-description">
-          <ul>
-            <li>Developed an autonomous perception system using cameras and infrared with PyTorch on an NVIDIA Jetson.</li>
-            <li>Competed in the fully autonomous robotics track—Top 6 at the World Championships and Think Award Winner (2021).</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-    <article class="project-panel" id="project-5">
-      <div class="project-panel-image">
-        <img src="images/project5-small.png" alt="Electronic Face Mask">
-      </div>
-      <div class="project-panel-content">
-        <h2 class="project-panel-title">Electronic Face Mask</h2>
-        <p class="project-panel-subtitle">Wearable electronics · Interactive display</p>
-        <div class="project-panel-description">
-          <ul>
-            <li>Interactive electronic face mask combining custom hardware, embedded systems, and display elements.</li>
-            <li>Hands-on exploration of wearable tech and user interface design.</li>
-          </ul>
-        </div>
-      </div>
-    </article>
-  </section>
+    <section class="card-grid-3" aria-label="Featured cards">
+      <a class="mini-card" href="#project-1">
+        <img class="mini-thumb" src="images/project6-big.png" alt="">
+        <p class="mini-meta"><span class="mini-meta-label">Researcher</span> <span class="mini-meta-entity">Caltech Autonomous Bipedal Robotics Lab</span></p>
+        <p class="mini-title"><span>Ball Catching Humanoid Robot</span></p>
+        <span class="mini-rule" aria-hidden="true"></span>
+      </a>
+      <a class="mini-card" href="#project-2">
+        <img class="mini-thumb" src="images/project1-small.png" alt="">
+        <p class="mini-meta"><span class="mini-meta-label">Project Lead</span> <span class="mini-meta-entity">MIT InvenTeam | $7,500 Grant</span></p>
+        <p class="mini-title"><span>Autonomously Navigating Walker for Elderly Adults</span></p>
+        <span class="mini-rule" aria-hidden="true"></span>
+      </a>
+      <a class="mini-card" href="#project-3">
+        <img class="mini-thumb" src="images/project2-small.png" alt="">
+        <p class="mini-meta"><span class="mini-meta-label">Team Captain</span> <span class="mini-meta-entity">FIRST Robotics Top 24 Team</span></p>
+        <p class="mini-title"><span>FIRST Robotics Competition Cone-Stacking Robot</span></p>
+        <span class="mini-rule" aria-hidden="true"></span>
+      </a>
+    </section>
 
-    </main>
+    <section class="card-grid-3" aria-label="Featured cards row two">
+      <a class="mini-card" href="#project-1">
+        <img class="mini-thumb" src="images/project3-big.png" alt="">
+        <p class="mini-meta"><span class="mini-meta-label">Programming Lead</span> <span class="mini-meta-entity">MIT InvenTeam | $10,000 Grant</span></p>
+        <p class="mini-title"><span>Drowning Detection Wristband</span></p>
+        <span class="mini-rule" aria-hidden="true"></span>
+      </a>
+      <a class="mini-card" href="#project-2">
+        <img class="mini-thumb" src="images/project4-small.png" alt="">
+        <p class="mini-meta"><span class="mini-meta-label">Programming Lead</span> <span class="mini-meta-entity">VEX AI Robotics Competition</span></p>
+        <p class="mini-title"><span>Autonomous Competition Robot</span></p>
+        <span class="mini-rule" aria-hidden="true"></span>
+      </a>
+      <a class="mini-card" href="#project-3">
+        <img class="mini-thumb" src="images/project5-small.png" alt="">
+        <p class="mini-meta"><span class="mini-meta-label">Programming Lead</span> <span class="mini-meta-entity">XPRIZE Mask Challenge</span></p>
+        <p class="mini-title"><span>Temperature and Humidity Controlled Face Mask</span></p>
+        <span class="mini-rule" aria-hidden="true"></span>
+      </a>
+    </section>
+
   </div>
 
   <script>
-    (function() {
-      var panels = document.querySelectorAll('.project-panel');
-      if (!panels.length) return;
+    (function () {
+      var target = document.getElementById('typed-name');
+      var cursor = document.querySelector('.typing-cursor');
+      if (!target || !cursor) return;
 
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
-        });
-      }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -80px 0px'
-      });
+      var fullText = 'Samantha\nChang';
+      var i = 0;
+      var delay = 80;
 
-      panels.forEach(function(panel) {
-        observer.observe(panel);
-      });
+      function typeNext() {
+        if (i <= fullText.length) {
+          target.textContent = fullText.slice(0, i);
+          i += 1;
+          setTimeout(typeNext, delay);
+          return;
+        }
+        cursor.classList.add('is-hidden');
+      }
+
+      typeNext();
     })();
   </script>
+
 </body>
 </html>
